@@ -1,0 +1,110 @@
+@font-face{
+    font-family: 'Parisienne-Regular';
+src: url('../font/Parisienne-Regular.ttf');
+}
+
+*{
+    font-family: serif;
+}
+
+:root{
+    --main-bg-color: #f0e9d7;
+    --text-color: #222220;
+    --accent-bg-color: #cfdddd;
+    --element-bg-color: #e4d8be;
+    --element-shadow: #00000040;
+    --other-color: #dabc88;
+}
+
+form.main, .split{
+    display: flex;
+}
+
+html, body{
+    height: 100vh;
+    margin: 0;
+
+    background: var(--main-bg-color);
+    color: var(--text-color);
+}
+
+header{
+    margin: 0;
+    padding: 2rem;
+
+    box-shadow: 0 4px 2px var(--element-shadow);
+
+    background: var(--element-bg-color);
+}
+
+input, label{
+    font-size: 1.1em;
+}
+
+label:after{
+    content: ':';
+}
+
+input{
+    margin: 1rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 5px 4px 2px var(--element-shadow);
+    background: var(--other-color);
+}
+
+input[type="submit"]{
+    width: 20%;
+    cursor: pointer;
+}
+
+input:disabled{
+    cursor: default;
+}
+
+form.main{
+    flex-direction: column;
+    width: 30%;
+    margin: 3rem auto;
+    padding: 2rem;
+
+    box-shadow: 5px 5px 2px var(--element-shadow);
+    border-radius: 15px;
+
+    background: var(--element-bg-color);
+}
+
+form.main input.check{
+    background: transparent;
+    border: 5px solid var(--other-color);
+}
+
+/* GLOBAL classes */
+.no-margin{
+    margin: 0;
+}
+
+.diverse{
+    font-family: 'Parisienne-Regular';
+    font-weight: 100;
+
+}
+
+.diverse.big{
+    font-size: 1.3em;
+}
+
+.diverse::before, .diverse::after{
+    content: '\00a0';
+}
+
+.split{
+    justify-content: space-between;
+}
+
+.center{
+    text-align: center;
+    font-size: 1.2em;
+}
