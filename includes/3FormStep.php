@@ -2,11 +2,14 @@
 
     <p class="center">What is your <b>IBAN</b> ?</p>
 
-    <label for="iban">IBAN</label>
-    <div class="split">
-        <input type="text" name="iban">
-        <img src="/" alt="no">
-    </div>
+    <?php 
+    
+    generateInput([
+        ['name' => 'iban', 'type' => 'text'],
+    ],$_SESSION['form'])
+
+    
+    ?>
 
 
 

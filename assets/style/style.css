@@ -56,7 +56,6 @@ input{
 }
 
 input[type="submit"]{
-    width: 20%;
     cursor: pointer;
 }
 
@@ -64,9 +63,9 @@ input:disabled{
     cursor: default;
 }
 
-form.main{
+form.main, table.showSurvey{
     flex-direction: column;
-    width: 30%;
+    width: fit-content;
     margin: 3rem auto;
     padding: 2rem;
 
@@ -107,4 +106,34 @@ form.main input.check{
 .center{
     text-align: center;
     font-size: 1.2em;
+}
+
+/* global */
+p.alert, p.success, p.warn{
+    margin-top: 0;
+}
+
+.alert{
+    color: red;
+}
+
+/* admin */
+
+table.showSurvey tr.data{
+    text-align: center;
+    cursor: pointer;
+}
+
+table.showSurvey tr.data:hover{
+    background: var(--other-color);
+}
+
+
+@media (max-width: 900px){
+    header{
+        text-align: center;
+    }
+    form.main{
+        width: min-content;
+    }
 }

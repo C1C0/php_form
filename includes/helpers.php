@@ -26,7 +26,61 @@ function auto_version($file)
  */
 function changePage($pageCounter, $pages)
 {
-    if (isset($_POST['next']) && $pageCounter < (count($pages) - 1)) return ++$pageCounter;
+    global $errors;
+
+    if (isset($_POST['next']) && $pageCounter < (count($pages) - 1) &&  count($errors) === 0) return ++$pageCounter;
     if (isset($_POST['previous']) && $pageCounter > 0) return --$pageCounter;
     return $pageCounter;
+}
+
+
+function getArrayValue($array,$value)
+{
+    return (!empty($array[$value]) ? $array[$value] : '');
+}
+
+function showError($nameOfError)
+{
+    global $errors;
+
+    $string = '';
+
+    if (!empty($errors[$nameOfError]))
+        foreach ($errors[$nameOfError] as $error) {
+            $string .= "$error <br>";
+        }
+
+    return $string;
+}
+
+function generateInput($arrays, $valuesArr, $disabled = '')
+{
+    foreach ($arrays as $array) {
+        echo "
+        <label for='{$array['name']}'>" . ucfirst($array['name']) . "</label>
+        <input type='{$array['type']}' name='{$array['name']}' value='" . getArrayValue($valuesArr,$array['name']) . "' $disabled>
+        <p class='alert'>" . showError($array['name']) . "</p>
+        ";
+    }
+}
+
+function pushError($name, $errmsg)
+{
+    global $errors;
+
+    empty($errors[$name]) ? $errors[$name] = [$errmsg] : array_push($errors[$name], $errmsg);
+}
+
+function connectToDB($queryString, $type = '')
+{
+    global $conn;
+
+    //prepare query
+    $stmt = $conn->prepare($queryString);
+
+    //execute
+    $stmt->execute();
+
+    if ($type === 'SELECT')
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

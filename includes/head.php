@@ -7,15 +7,27 @@ include 'helpers.php';
 
 session_start();
 
+//pages counter
 if (!isset($_SESSION['page']))  $_SESSION['page'] = 0;
+if (!isset($_SESSION['form'])) $_SESSION['form'] = [];
+
+$errors = [];
 
 $pages = [
     'includes/1FormStep.php',
     'includes/2FormStep.php',
     'includes/3FormStep.php',
     'includes/4FormStep.php'
-]
+];
 
+//database config
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbName = "bankForm";
+
+$conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
 
 

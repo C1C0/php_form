@@ -2,17 +2,17 @@
 
     <p class="center">Where do you live ?</p>
 
-    <label for="street">Street</label>
-    <input type="text" name="street">
+    <?php
 
-    <label for="number">Number</label>
-    <input type="text" name="number">
+    generateInput([
+        ['name' => 'street', 'type' => 'text'],
+        ['name' => 'number', 'type' => 'text'],
+        ['name' => 'city', 'type' => 'text'],
+        ['name' => 'postalCode', 'type' => 'text'],
 
-    <label for="city">City</label>
-    <input type="text" name="city">
+    ],$_SESSION['form'])
 
-    <label for="postalCode">ZIP / Postal code</label>
-    <input type="text" name="postalCode">
+    ?>
 
 
     <?php include 'form/submitButtons.php'; ?>
